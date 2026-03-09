@@ -11,7 +11,10 @@
 <header class="navbar">
   <div class="container nav-inner">
     <div class="logo">
-      <div class="logo-box">BG</div>
+      <div class="logo-box" id="logoBox">
+        <img id="logoPreview" src="" alt="App Logo" style="display: none;" />
+        <span id="logoText">BG</span>
+      </div>
       <div>
         <h3>BlueLight Guardian 24/7</h3>
         <p class="subtitle">Emergency service wellbeing platform</p>
@@ -25,6 +28,11 @@
     </nav>
   </div>
 </header>
+
+<section class="container" style="padding-top: 10px;">
+  <label for="logoUpload"><strong>Upload Logo:</strong></label>
+  <input type="file" id="logoUpload" accept="image/*" />
+</section>
 
 <section class="hero container">
   <div class="hero-text">
