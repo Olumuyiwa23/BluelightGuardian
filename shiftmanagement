@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Shift Management – BlueLight Guardian</title>
+
+<style>
+
+body{
+font-family: Inter, Arial, sans-serif;
+background:#F6F9FF;
+color:#0F172A;
+margin:0;
+line-height:1.6;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+color:#1E3A8A;
+}
+
+h2{
+margin-top:40px;
+color:#1E3A8A;
+}
+
+h3{
+color:#2563EB;
+margin-top:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+border:1px solid #E5E7EB;
+margin-top:20px;
+}
+
+ul{
+padding-left:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+border:1px solid #E5E7EB;
+padding:10px;
+text-align:left;
+}
+
+th{
+background:#F1F5F9;
+}
+
+.note{
+background:#EEF4FF;
+border-left:4px solid #2563EB;
+padding:15px;
+margin-top:15px;
+}
+
+.image-box{
+margin:25px 0;
+text-align:center;
+}
+
+.image-box img{
+width:100%;
+max-width:700px;
+border-radius:10px;
+border:1px solid #E5E7EB;
+}
+
+.caption{
+font-size:14px;
+color:#6B7280;
+margin-top:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>1. Shift Management</h1>
+
+<p>
+The Shift Management module enables police officers and emergency service personnel
+to plan, create, and manage their work schedules efficiently.
+</p>
+
+<div class="image-box">
+
+<img src="images/shift-dashboard.png">
+
+<p class="caption">Figure 1: Shift Management Dashboard</p>
+
+</div>
+
+<div class="card">
+
+<h3>This feature allows users to:</h3>
+
+<ul>
+<li>Create individual shifts for specific dates</li>
+<li>Generate repeating schedules using shift patterns</li>
+<li>View schedules in list view and calendar view</li>
+<li>Modify existing shift patterns and cycles</li>
+</ul>
+
+</div>
+
+---
+
+<h2>1.1 Shift Schedule Creation</h2>
+
+<p>
+Users can create schedules using the <strong>Create Shift</strong> option.
+</p>
+
+<div class="image-box">
+
+<img src="images/create-shift-menu.png">
+
+<p class="caption">Figure 2: Create Shift Options Menu</p>
+
+</div>
+
+Users can choose:
+
+<ul>
+<li><strong>Custom Shift</strong> – Create individual shifts manually.</li>
+<li><strong>Shift Pattern</strong> – Generate repeating schedules using cycles.</li>
+</ul>
+
+---
+
+<h2>1.2 Creating a Custom Shift</h2>
+
+<h3>Step 1: Access Custom Shift</h3>
+
+<ul>
+<li>Navigate to the Shift Management screen.</li>
+<li>Tap <strong>Create Shift</strong>.</li>
+<li>Select <strong>Custom Shift</strong>.</li>
+</ul>
+
+<div class="image-box">
+
+<img src="images/custom-shift-form.png">
+
+<p class="caption">Figure 3: Custom Shift Creation Form</p>
+
+</div>
+
+---
+
+<h3>Step 2: Enter Shift Details</h3>
+
+<table>
+
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Date</td>
+<td>Select the shift date</td>
+</tr>
+
+<tr>
+<td>Shift Type</td>
+<td>Day, Early, Night etc.</td>
+</tr>
+
+<tr>
+<td>Working Hours</td>
+<td>Enter start and end time</td>
+</tr>
+
+<tr>
+<td>Break Time</td>
+<td>Optional rest period</td>
+</tr>
+
+<tr>
+<td>Colour Code</td>
+<td>Colour used for calendar display</td>
+</tr>
+
+</table>
+
+---
+
+<h3>Step 3: Submit and Confirm</h3>
+
+<ul>
+<li>Tap <strong>Submit</strong></li>
+<li>Review the confirmation screen</li>
+<li>Tap <strong>Confirm</strong> to save the shift</li>
+</ul>
+
+<div class="image-box">
+
+<img src="images/shift-confirmation.png">
+
+<p class="caption">Figure 4: Shift Confirmation Screen</p>
+
+</div>
+
+<div class="note">
+
+The shift will appear in:
+<ul>
+<li>Shift Schedule List</li>
+<li>Calendar View</li>
+</ul>
+
+</div>
+
+---
+
+<h2>1.3 Creating a Shift Pattern</h2>
+
+<p>
+Shift patterns allow users to automatically generate repeating schedules
+using Shift Cycles.
+</p>
+
+<div class="image-box">
+
+<img src="images/shift-pattern-builder.png">
+
+<p class="caption">Figure 5: Shift Pattern Builder</p>
+
+</div>
+
+---
+
+<h3>Step 1: Create a Shift Cycle</h3>
+
+<ul>
+<li>Enter a cycle name</li>
+<li>Add shift entries</li>
+</ul>
+
+<table>
+
+<tr>
+<th>Shift Type</th>
+<th>Working Hours</th>
+<th>Break</th>
+<th>Duration</th>
+</tr>
+
+<tr>
+<td>Day Shift</td>
+<td>09:00 – 17:00</td>
+<td>1 hour</td>
+<td>3 days</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<strong>Important:</strong>  
+Every shift cycle must include at least one <strong>Rest Day</strong>.
+
+</div>
+
+---
+
+<h3>Step 2: Add Cycle to Pattern</h3>
+
+<ul>
+<li>Specify number of repetitions</li>
+<li>Add additional cycles if needed</li>
+</ul>
+
+<div class="image-box">
+
+<img src="images/pattern-cycle-add.png">
+
+<p class="caption">Figure 6: Adding Cycles to Pattern</p>
+
+</div>
+
+---
+
+<h3>Step 3: Generate Schedule</h3>
+
+Users must provide:
+
+<ul>
+<li>Start Date</li>
+<li>Number of Occurrences</li>
+</ul>
+
+The system then automatically generates the full shift schedule.
+
+<div class="image-box">
+
+<img src="images/calendar-view.png">
+
+<p class="caption">Figure 7: Calendar View of Generated Shifts</p>
+
+</div>
+
+---
+
+<h2>1.4 Shift Pattern Creation</h2>
+
+Users can create patterns in two ways:
+
+<ul>
+<li>Create a Custom Pattern</li>
+<li>Use an Existing Pattern</li>
+</ul>
+
+<div class="image-box">
+
+<img src="images/pattern-selection.png">
+
+<p class="caption">Figure 8: Pattern Selection Screen</p>
+
+</div>
+
+---
+
+<h2>1.5 Shift Cycle Creation</h2>
+
+A Shift Cycle represents a repeating sequence of shifts and rest days.
+
+<div class="image-box">
+
+<img src="images/cycle-creation.png">
+
+<p class="caption">Figure 9: Shift Cycle Creation Screen</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
