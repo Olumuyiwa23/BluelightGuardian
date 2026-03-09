@@ -1,361 +1,757 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shift Management – BlueLight Guardian 24/7</title>
+  <meta
+    name="description"
+    content="Shift Management guidance for BlueLight Guardian 24/7."
+  />
+  <style>
+    :root{
+      --bg:#F6F9FF;
+      --police-blue:#3B82F6;
+      --accent-blue:#2563EB;
+      --highlight:#60A5FA;
+      --text:#0F172A;
+      --muted:#64748B;
+      --line:#E2E8F0;
+      --white:#FFFFFF;
+      --surface:#FFFFFF;
+      --surface-soft:#F8FBFF;
+      --note-bg:#EFF6FF;
+      --shadow:0 10px 30px rgba(15,23,42,0.06);
+      --radius-xl:24px;
+      --radius-lg:18px;
+      --radius-md:12px;
+      --container:1120px;
+    }
 
-<meta charset="UTF-8">
-<title>Shift Management – BlueLight Guardian</title>
+    *{
+      box-sizing:border-box;
+    }
 
-<style>
+    html{
+      scroll-behavior:smooth;
+    }
 
-body{
-font-family: Inter, Arial, sans-serif;
-background:#F6F9FF;
-color:#0F172A;
-margin:0;
-line-height:1.6;
-}
+    body{
+      margin:0;
+      font-family:Inter, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-h1{
-color:#1E3A8A;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
-h2{
-margin-top:40px;
-color:#1E3A8A;
-}
+    .container{
+      width:min(var(--container), calc(100% - 2rem));
+      margin:0 auto;
+    }
 
-h3{
-color:#2563EB;
-margin-top:25px;
-}
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(246,249,255,0.92);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+    }
 
-.card{
-background:white;
-padding:25px;
-border-radius:12px;
-border:1px solid #E5E7EB;
-margin-top:20px;
-}
+    .nav-inner{
+      min-height:78px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
 
-ul{
-padding-left:20px;
-}
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
-}
+    .logo-box{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--police-blue), var(--accent-blue));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:800;
+      letter-spacing:0.02em;
+      overflow:hidden;
+    }
 
-th,td{
-border:1px solid #E5E7EB;
-padding:10px;
-text-align:left;
-}
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-th{
-background:#F1F5F9;
-}
+    .logo-copy{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
 
-.note{
-background:#EEF4FF;
-border-left:4px solid #2563EB;
-padding:15px;
-margin-top:15px;
-}
+    .brand{
+      font-size:1rem;
+      font-weight:800;
+      color:var(--text);
+    }
 
-.image-box{
-margin:25px 0;
-text-align:center;
-}
+    .subbrand{
+      font-size:0.9rem;
+      color:var(--muted);
+    }
 
-.image-box img{
-width:100%;
-max-width:700px;
-border-radius:10px;
-border:1px solid #E5E7EB;
-}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+    }
 
-.caption{
-font-size:14px;
-color:#6B7280;
-margin-top:8px;
-}
+    .nav-links a{
+      color:#334155;
+      font-weight:600;
+      font-size:0.95rem;
+    }
 
-</style>
+    .nav-links a:hover{
+      color:var(--accent-blue);
+    }
 
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:12px;
+      border:1px solid transparent;
+      font-weight:700;
+      transition:0.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--accent-blue);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#1D4ED8;
+    }
+
+    .btn-secondary{
+      background:white;
+      color:var(--accent-blue);
+      border-color:var(--line);
+    }
+
+    .btn-secondary:hover{
+      border-color:#BFDBFE;
+      background:#F8FBFF;
+    }
+
+    .hero{
+      padding:56px 0 28px;
+    }
+
+    .hero-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#EFF6FF;
+      color:var(--accent-blue);
+      font-size:0.85rem;
+      font-weight:700;
+      border:1px solid #DBEAFE;
+      margin-bottom:16px;
+    }
+
+    .hero h1{
+      margin:0 0 14px;
+      font-size:clamp(2.2rem, 5vw, 3.5rem);
+      line-height:1.05;
+      letter-spacing:-0.04em;
+      color:var(--text);
+    }
+
+    .hero p{
+      margin:0;
+      max-width:70ch;
+      color:var(--muted);
+      font-size:1.02rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .page-layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:24px;
+      padding:20px 0 72px;
+    }
+
+    .sidebar{
+      align-self:start;
+      position:sticky;
+      top:100px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 4px 14px rgba(15,23,42,0.03);
+    }
+
+    .sidebar h3{
+      margin:0 0 14px;
+      font-size:1rem;
+      color:var(--text);
+    }
+
+    .sidebar a{
+      display:block;
+      padding:10px 0;
+      color:#334155;
+      font-weight:600;
+      font-size:0.95rem;
+      border-bottom:1px solid #EEF2F7;
+    }
+
+    .sidebar a:last-child{
+      border-bottom:none;
+    }
+
+    .sidebar a:hover{
+      color:var(--accent-blue);
+    }
+
+    .content{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .doc-section{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 4px 14px rgba(15,23,42,0.03);
+    }
+
+    .doc-section h2{
+      margin:0 0 14px;
+      font-size:1.55rem;
+      letter-spacing:-0.02em;
+      color:var(--text);
+    }
+
+    .doc-section h3{
+      margin:22px 0 10px;
+      font-size:1.05rem;
+      color:var(--accent-blue);
+    }
+
+    .doc-section p{
+      margin:0 0 14px;
+      color:#334155;
+    }
+
+    .doc-section ul,
+    .doc-section ol{
+      margin:0 0 14px 0;
+      padding-left:22px;
+      color:#334155;
+    }
+
+    .intro-list{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .mini-card{
+      background:var(--surface-soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+    }
+
+    .mini-card strong{
+      display:block;
+      margin-bottom:6px;
+      color:var(--text);
+      font-size:0.96rem;
+    }
+
+    .mini-card span{
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+
+    .image-box{
+      margin:18px 0 8px;
+      text-align:center;
+    }
+
+    .image-box img{
+      width:100%;
+      max-width:760px;
+      margin:0 auto;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#F8FAFC;
+      box-shadow:0 4px 14px rgba(15,23,42,0.03);
+    }
+
+    .caption{
+      margin-top:10px;
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      margin:14px 0 8px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:620px;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    th, td{
+      padding:12px 14px;
+      text-align:left;
+      border-bottom:1px solid var(--line);
+    }
+
+    th{
+      background:#F8FBFF;
+      color:var(--text);
+      font-size:0.94rem;
+    }
+
+    td{
+      color:#334155;
+      font-size:0.95rem;
+    }
+
+    tr:last-child td{
+      border-bottom:none;
+    }
+
+    .note{
+      background:var(--note-bg);
+      border:1px solid #DBEAFE;
+      border-radius:14px;
+      padding:16px 18px;
+      margin-top:14px;
+      color:#1E3A8A;
+    }
+
+    .step-block{
+      margin-top:14px;
+      padding-top:10px;
+      border-top:1px solid #EEF2F7;
+    }
+
+    .step-block:first-of-type{
+      border-top:none;
+      padding-top:0;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:32px 0 48px;
+      background:#FAFCFF;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+    }
+
+    .footer p{
+      margin:0;
+      font-weight:700;
+    }
+
+    .footer span{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    @media (max-width: 980px){
+      .page-layout{
+        grid-template-columns:1fr;
+      }
+
+      .sidebar{
+        position:static;
+      }
+
+      .intro-list{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 720px){
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 0;
+      }
+
+      .nav-links{
+        flex-wrap:wrap;
+        gap:14px;
+      }
+
+      .hero-card,
+      .doc-section,
+      .sidebar{
+        padding:22px;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 520px){
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<h1>1. Shift Management</h1>
-
-<p>
-The Shift Management module enables police officers and emergency service personnel
-to plan, create, and manage their work schedules efficiently.
-</p>
-
-<div class="image-box">
-
-<img src="images/shift-dashboard.png">
-
-<p class="caption">Figure 1: Shift Management Dashboard</p>
-
-</div>
-
-<div class="card">
-
-<h3>This feature allows users to:</h3>
-
-<ul>
-<li>Create individual shifts for specific dates</li>
-<li>Generate repeating schedules using shift patterns</li>
-<li>View schedules in list view and calendar view</li>
-<li>Modify existing shift patterns and cycles</li>
-</ul>
-
-</div>
-
----
-
-<h2>1.1 Shift Schedule Creation</h2>
-
-<p>
-Users can create schedules using the <strong>Create Shift</strong> option.
-</p>
-
-<div class="image-box">
-
-<img src="images/create-shift-menu.png">
-
-<p class="caption">Figure 2: Create Shift Options Menu</p>
-
-</div>
-
-Users can choose:
-
-<ul>
-<li><strong>Custom Shift</strong> – Create individual shifts manually.</li>
-<li><strong>Shift Pattern</strong> – Generate repeating schedules using cycles.</li>
-</ul>
-
----
-
-<h2>1.2 Creating a Custom Shift</h2>
-
-<h3>Step 1: Access Custom Shift</h3>
-
-<ul>
-<li>Navigate to the Shift Management screen.</li>
-<li>Tap <strong>Create Shift</strong>.</li>
-<li>Select <strong>Custom Shift</strong>.</li>
-</ul>
-
-<div class="image-box">
-
-<img src="images/custom-shift-form.png">
-
-<p class="caption">Figure 3: Custom Shift Creation Form</p>
-
-</div>
-
----
-
-<h3>Step 2: Enter Shift Details</h3>
-
-<table>
-
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-
-<tr>
-<td>Date</td>
-<td>Select the shift date</td>
-</tr>
-
-<tr>
-<td>Shift Type</td>
-<td>Day, Early, Night etc.</td>
-</tr>
-
-<tr>
-<td>Working Hours</td>
-<td>Enter start and end time</td>
-</tr>
-
-<tr>
-<td>Break Time</td>
-<td>Optional rest period</td>
-</tr>
-
-<tr>
-<td>Colour Code</td>
-<td>Colour used for calendar display</td>
-</tr>
-
-</table>
-
----
-
-<h3>Step 3: Submit and Confirm</h3>
-
-<ul>
-<li>Tap <strong>Submit</strong></li>
-<li>Review the confirmation screen</li>
-<li>Tap <strong>Confirm</strong> to save the shift</li>
-</ul>
-
-<div class="image-box">
-
-<img src="images/shift-confirmation.png">
-
-<p class="caption">Figure 4: Shift Confirmation Screen</p>
-
-</div>
-
-<div class="note">
-
-The shift will appear in:
-<ul>
-<li>Shift Schedule List</li>
-<li>Calendar View</li>
-</ul>
-
-</div>
-
----
-
-<h2>1.3 Creating a Shift Pattern</h2>
-
-<p>
-Shift patterns allow users to automatically generate repeating schedules
-using Shift Cycles.
-</p>
-
-<div class="image-box">
-
-<img src="images/shift-pattern-builder.png">
-
-<p class="caption">Figure 5: Shift Pattern Builder</p>
-
-</div>
-
----
-
-<h3>Step 1: Create a Shift Cycle</h3>
-
-<ul>
-<li>Enter a cycle name</li>
-<li>Add shift entries</li>
-</ul>
-
-<table>
-
-<tr>
-<th>Shift Type</th>
-<th>Working Hours</th>
-<th>Break</th>
-<th>Duration</th>
-</tr>
-
-<tr>
-<td>Day Shift</td>
-<td>09:00 – 17:00</td>
-<td>1 hour</td>
-<td>3 days</td>
-</tr>
-
-</table>
-
-<div class="note">
-
-<strong>Important:</strong>  
-Every shift cycle must include at least one <strong>Rest Day</strong>.
-
-</div>
-
----
-
-<h3>Step 2: Add Cycle to Pattern</h3>
-
-<ul>
-<li>Specify number of repetitions</li>
-<li>Add additional cycles if needed</li>
-</ul>
-
-<div class="image-box">
-
-<img src="images/pattern-cycle-add.png">
-
-<p class="caption">Figure 6: Adding Cycles to Pattern</p>
-
-</div>
-
----
-
-<h3>Step 3: Generate Schedule</h3>
-
-Users must provide:
-
-<ul>
-<li>Start Date</li>
-<li>Number of Occurrences</li>
-</ul>
-
-The system then automatically generates the full shift schedule.
-
-<div class="image-box">
-
-<img src="images/calendar-view.png">
-
-<p class="caption">Figure 7: Calendar View of Generated Shifts</p>
-
-</div>
-
----
-
-<h2>1.4 Shift Pattern Creation</h2>
-
-Users can create patterns in two ways:
-
-<ul>
-<li>Create a Custom Pattern</li>
-<li>Use an Existing Pattern</li>
-</ul>
-
-<div class="image-box">
-
-<img src="images/pattern-selection.png">
-
-<p class="caption">Figure 8: Pattern Selection Screen</p>
-
-</div>
-
----
-
-<h2>1.5 Shift Cycle Creation</h2>
-
-A Shift Cycle represents a repeating sequence of shifts and rest days.
-
-<div class="image-box">
-
-<img src="images/cycle-creation.png">
-
-<p class="caption">Figure 9: Shift Cycle Creation Screen</p>
-
-</div>
-
-</div>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-box">BG</div>
+        <div class="logo-copy">
+          <span class="brand">BlueLight Guardian 24/7</span>
+          <span class="subbrand">Emergency service wellbeing platform</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#access">Access</a>
+        <a href="index.html#download" class="btn btn-primary">Request Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">Feature Guide</span>
+          <h1>Shift Management</h1>
+          <p>
+            The Shift Management module enables police officers and emergency service
+            personnel to plan, create and manage work schedules efficiently using
+            custom shifts, shift patterns and reusable shift cycles.
+          </p>
+
+          <div class="hero-actions">
+            <a href="index.html" class="btn btn-secondary">Back to Homepage</a>
+            <a href="#section-1-2" class="btn btn-primary">Go to Custom Shift</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container page-layout">
+        <aside class="sidebar">
+          <h3>On this page</h3>
+          <a href="#section-overview">1. Overview</a>
+          <a href="#section-1-1">1.1 Shift Schedule Creation</a>
+          <a href="#section-1-2">1.2 Creating a Custom Shift</a>
+          <a href="#section-1-3">1.3 Creating a Shift Pattern</a>
+          <a href="#section-1-4">1.4 Shift Pattern Creation</a>
+          <a href="#section-1-5">1.5 Shift Cycle Creation</a>
+        </aside>
+
+        <div class="content">
+          <section class="doc-section" id="section-overview">
+            <h2>1. Shift Management</h2>
+            <p>
+              The Shift Management module enables police officers and emergency service personnel
+              to plan, create and manage their work schedules efficiently.
+            </p>
+
+            <div class="image-box">
+              <img src="images/shift-dashboard.png" alt="Shift Management dashboard" />
+              <p class="caption">Figure 1: Shift Management Dashboard</p>
+            </div>
+
+            <div class="intro-list">
+              <div class="mini-card">
+                <strong>Custom Shifts</strong>
+                <span>Create individual shifts for specific dates.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Shift Patterns</strong>
+                <span>Generate repeating schedules using reusable cycles.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Schedule Views</strong>
+                <span>Review shifts in both list and calendar view.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Flexible Editing</strong>
+                <span>Modify or reuse existing patterns and cycles.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="section-1-1">
+            <h2>1.1 Shift Schedule Creation</h2>
+            <p>
+              Users can create schedules using the <strong>Create Shift</strong> option.
+            </p>
+
+            <div class="image-box">
+              <img src="images/create-shift-menu.png" alt="Create Shift options menu" />
+              <p class="caption">Figure 2: Create Shift Options Menu</p>
+            </div>
+
+            <p>Users can choose between:</p>
+            <ul>
+              <li><strong>Custom Shift</strong> – Create individual shifts manually.</li>
+              <li><strong>Shift Pattern</strong> – Generate repeating schedules using cycles.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="section-1-2">
+            <h2>1.2 Creating a Custom Shift</h2>
+
+            <div class="step-block">
+              <h3>Step 1: Access Custom Shift</h3>
+              <ol>
+                <li>Navigate to the Shift Management screen.</li>
+                <li>Tap <strong>Create Shift</strong>.</li>
+                <li>Select <strong>Custom Shift</strong>.</li>
+              </ol>
+
+              <div class="image-box">
+                <img src="images/custom-shift-form.png" alt="Custom Shift creation form" />
+                <p class="caption">Figure 3: Custom Shift Creation Form</p>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <h3>Step 2: Enter Shift Details</h3>
+              <div class="table-wrap">
+                <table>
+                  <tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                  </tr>
+                  <tr>
+                    <td>Date</td>
+                    <td>Select the shift date</td>
+                  </tr>
+                  <tr>
+                    <td>Shift Type</td>
+                    <td>Day, Early, Night etc.</td>
+                  </tr>
+                  <tr>
+                    <td>Working Hours</td>
+                    <td>Enter start and end time</td>
+                  </tr>
+                  <tr>
+                    <td>Break Time</td>
+                    <td>Optional rest period</td>
+                  </tr>
+                  <tr>
+                    <td>Colour Code</td>
+                    <td>Colour used for calendar display</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <h3>Step 3: Submit and Confirm</h3>
+              <ol>
+                <li>Tap <strong>Submit</strong>.</li>
+                <li>Review the confirmation screen.</li>
+                <li>Tap <strong>Confirm</strong> to save the shift.</li>
+              </ol>
+
+              <div class="image-box">
+                <img src="images/shift-confirmation.png" alt="Shift confirmation screen" />
+                <p class="caption">Figure 4: Shift Confirmation Screen</p>
+              </div>
+
+              <div class="note">
+                The shift will appear in:
+                <ul>
+                  <li>Shift Schedule List</li>
+                  <li>Calendar View</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="section-1-3">
+            <h2>1.3 Creating a Shift Pattern</h2>
+            <p>
+              Shift patterns allow users to automatically generate repeating schedules
+              using Shift Cycles.
+            </p>
+
+            <div class="image-box">
+              <img src="images/shift-pattern-builder.png" alt="Shift Pattern Builder" />
+              <p class="caption">Figure 5: Shift Pattern Builder</p>
+            </div>
+
+            <div class="step-block">
+              <h3>Step 1: Create a Shift Cycle</h3>
+              <ul>
+                <li>Enter a cycle name.</li>
+                <li>Add shift entries.</li>
+              </ul>
+
+              <div class="table-wrap">
+                <table>
+                  <tr>
+                    <th>Shift Type</th>
+                    <th>Working Hours</th>
+                    <th>Break</th>
+                    <th>Duration</th>
+                  </tr>
+                  <tr>
+                    <td>Day Shift</td>
+                    <td>09:00 – 17:00</td>
+                    <td>1 hour</td>
+                    <td>3 days</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="note">
+                <strong>Important:</strong> Every shift cycle must include at least one
+                <strong>Rest Day</strong>.
+              </div>
+            </div>
+
+            <div class="step-block">
+              <h3>Step 2: Add Cycle to Pattern</h3>
+              <ul>
+                <li>Specify the number of repetitions.</li>
+                <li>Add additional cycles if needed.</li>
+              </ul>
+
+              <div class="image-box">
+                <img src="images/pattern-cycle-add.png" alt="Adding cycles to pattern" />
+                <p class="caption">Figure 6: Adding Cycles to Pattern</p>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <h3>Step 3: Generate Schedule</h3>
+              <p>Users must provide:</p>
+              <ul>
+                <li>Start Date</li>
+                <li>Number of Occurrences</li>
+              </ul>
+              <p>The system then automatically generates the full shift schedule.</p>
+
+              <div class="image-box">
+                <img src="images/calendar-view.png" alt="Calendar view of generated shifts" />
+                <p class="caption">Figure 7: Calendar View of Generated Shifts</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="section-1-4">
+            <h2>1.4 Shift Pattern Creation</h2>
+            <p>Users can create patterns in two ways:</p>
+            <ul>
+              <li>Create a Custom Pattern</li>
+              <li>Use an Existing Pattern</li>
+            </ul>
+
+            <div class="image-box">
+              <img src="images/pattern-selection.png" alt="Pattern selection screen" />
+              <p class="caption">Figure 8: Pattern Selection Screen</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="section-1-5">
+            <h2>1.5 Shift Cycle Creation</h2>
+            <p>
+              A Shift Cycle represents a repeating sequence of shifts and rest days.
+            </p>
+
+            <div class="image-box">
+              <img src="images/cycle-creation.png" alt="Shift cycle creation screen" />
+              <p class="caption">Figure 9: Shift Cycle Creation Screen</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p>BlueLight Guardian 24/7</p>
+        <span>Supporting operational readiness through wellbeing-aware design.</span>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
