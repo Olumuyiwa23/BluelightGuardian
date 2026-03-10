@@ -10,69 +10,141 @@
   />
   <style>
     :root{
-      --bg:#F6F9FF;
-      --police-blue:#3B82F6;
-      --accent-blue:#2563EB;
-      --highlight:#60A5FA;
-      --text:#0F172A;
-      --muted:#64748B;
-      --line:#E2E8F0;
-      --white:#FFFFFF;
+      --bg:#F8FAFC;
       --surface:#FFFFFF;
-      --surface-soft:#F8FBFF;
-      --shadow:0 10px 30px rgba(15,23,42,0.06);
-      --radius-xl:24px;
-      --radius-lg:18px;
-      --radius-md:12px;
-      --container:1120px;
+      --surface-soft:#F1F5F9;
+      --surface-muted:#E2E8F0;
+      --primary:#1D4ED8;
+      --primary-dark:#1E3A8A;
+      --text:#0F172A;
+      --muted:#475569;
+      --muted-soft:#64748B;
+      --line:rgba(15,23,42,0.08);
+      --line-strong:rgba(15,23,42,0.12);
+      --success:#15803D;
+      --shadow:0 18px 40px rgba(15,23,42,0.08);
+      --shadow-soft:0 10px 24px rgba(15,23,42,0.05);
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:14px;
+      --container:1180px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:Inter, Arial, sans-serif;
-      background:var(--bg);
       color:var(--text);
+      background:linear-gradient(180deg, #FCFDFF 0%, var(--bg) 100%);
       line-height:1.6;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
 
     .container{
       width:min(var(--container), calc(100% - 2rem));
       margin:0 auto;
     }
 
+    .section{
+      padding:88px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--surface);
+      color:var(--primary);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--primary);
+    }
+
+    .section-heading{
+      max-width:760px;
+      margin-bottom:34px;
+    }
+
+    .section-heading h2{
+      margin:16px 0 12px;
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.03em;
+    }
+
+    .section-heading p{
+      margin:0;
+      color:var(--muted);
+      font-size:1.02rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:48px;
+      padding:0 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:.25s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:var(--primary-dark);
+      box-shadow:0 10px 22px rgba(30,58,138,0.16);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      background:var(--primary);
+    }
+
+    .btn-secondary{
+      color:var(--text);
+      background:var(--surface);
+      border-color:var(--line-strong);
+    }
+
+    .btn-secondary:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--shadow-soft);
+    }
+
     .navbar{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(246,249,255,0.92);
+      background:rgba(248,250,252,0.92);
+      backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
-      backdrop-filter:blur(10px);
     }
 
     .nav-inner{
-      min-height:78px;
+      min-height:82px;
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      gap:20px;
+      justify-content:space-between;
+      gap:24px;
     }
 
     .logo{
@@ -82,16 +154,26 @@
     }
 
     .logo-box{
-      width:48px;
-      height:48px;
+      width:52px;
+      height:52px;
       border-radius:14px;
-      background:linear-gradient(135deg, var(--police-blue), var(--accent-blue));
+      overflow:hidden;
+      flex-shrink:0;
+      background:var(--primary-dark);
+      box-shadow:0 10px 20px rgba(15,23,42,0.10);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:white;
+      color:#fff;
       font-weight:800;
-      letter-spacing:0.02em;
+      font-size:1rem;
+      letter-spacing:.02em;
+    }
+
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
     .logo-copy{
@@ -101,8 +183,9 @@
     }
 
     .brand{
-      font-size:1rem;
       font-weight:800;
+      font-size:1rem;
+      letter-spacing:-0.02em;
       color:var(--text);
     }
 
@@ -118,84 +201,42 @@
     }
 
     .nav-links a{
-      color:#334155;
+      color:var(--muted);
       font-weight:600;
-      font-size:0.95rem;
+      transition:.2s ease;
     }
 
     .nav-links a:hover{
-      color:var(--accent-blue);
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 18px;
-      border-radius:12px;
-      border:1px solid transparent;
-      font-weight:700;
-      transition:0.2s ease;
-    }
-
-    .btn-primary{
-      background:var(--accent-blue);
-      color:white;
-    }
-
-    .btn-primary:hover{
-      background:#1D4ED8;
-    }
-
-    .btn-secondary{
-      background:white;
-      color:var(--accent-blue);
-      border-color:var(--line);
-    }
-
-    .btn-secondary:hover{
-      border-color:#BFDBFE;
-      background:#F8FBFF;
+      color:var(--text);
     }
 
     .hero{
-      padding:72px 0 48px;
+      padding:56px 0 42px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.15fr 0.85fr;
-      gap:36px;
+      grid-template-columns:1.08fr .92fr;
+      gap:34px;
       align-items:center;
-    }
-
-    .eyebrow{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#EFF6FF;
-      color:var(--accent-blue);
-      font-size:0.85rem;
-      font-weight:700;
-      border:1px solid #DBEAFE;
     }
 
     .hero h1{
       margin:18px 0 16px;
-      font-size:clamp(2.5rem, 5vw, 4.3rem);
-      line-height:1.02;
-      letter-spacing:-0.04em;
+      font-size:clamp(2.8rem, 6vw, 4.8rem);
+      line-height:0.98;
+      letter-spacing:-0.05em;
       max-width:11ch;
+      color:var(--text);
     }
 
     .hero h1 span{
-      color:var(--accent-blue);
+      color:var(--primary-dark);
     }
 
     .hero p{
       margin:0;
-      max-width:60ch;
+      max-width:62ch;
       color:var(--muted);
       font-size:1.05rem;
     }
@@ -203,162 +244,424 @@
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
-      margin-top:26px;
+      gap:14px;
+      margin:28px 0;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .hero-tags span{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:12px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.92rem;
     }
 
     .hero-panel{
+      position:relative;
       background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:var(--radius-xl);
-      padding:24px;
+      border:1px solid var(--line-strong);
+      border-radius:32px;
       box-shadow:var(--shadow);
+      padding:26px;
+      overflow:hidden;
     }
 
-    .hero-panel h3{
-      margin:0 0 18px;
-      font-size:1.15rem;
+    .panel-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .panel-title{
+      margin:0;
+      color:var(--muted-soft);
+      font-size:0.88rem;
+      font-weight:700;
+    }
+
+    .panel-header h3{
+      margin:5px 0 0;
+      font-size:1.25rem;
+      line-height:1.2;
       color:var(--text);
     }
 
-    .overview-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
+    .live-pill{
+      padding:8px 12px;
+      border-radius:999px;
+      background:#F0FDF4;
+      color:var(--success);
+      font-size:0.82rem;
+      font-weight:800;
+      white-space:nowrap;
+      border:1px solid rgba(21,128,61,0.12);
     }
 
-    .overview-card{
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-bottom:16px;
+    }
+
+    .metric{
       background:var(--surface-soft);
       border:1px solid var(--line);
-      border-radius:14px;
+      border-radius:18px;
       padding:16px;
     }
 
-    .overview-card span{
+    .metric span{
       display:block;
-      font-size:0.85rem;
       color:var(--muted);
-      margin-bottom:6px;
+      font-size:0.88rem;
+      margin-bottom:8px;
+      font-weight:600;
     }
 
-    .overview-card strong{
-      font-size:0.98rem;
+    .metric strong{
+      display:block;
+      font-size:1rem;
       color:var(--text);
     }
 
-    .section{
-      padding:36px 0 72px;
+    .panel-strip{
+      padding:14px 16px;
+      border-radius:18px;
+      background:#0F172A;
+      color:#fff;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:center;
     }
 
-    .section-heading{
-      max-width:720px;
-      margin-bottom:26px;
+    .panel-strip small{
+      display:block;
+      opacity:.72;
+      margin-bottom:3px;
     }
 
-    .section-heading h2{
-      margin:0 0 10px;
-      font-size:clamp(1.8rem, 4vw, 2.8rem);
-      letter-spacing:-0.03em;
+    .panel-strip strong{
+      font-size:1rem;
     }
 
-    .section-heading p{
+    .stats{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .stat{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.8rem;
+      color:var(--primary-dark);
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .stat p{
       margin:0;
       color:var(--muted);
+      font-weight:600;
     }
 
     .feature-grid{
       display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
-    }
-
-    .feature-link{
-      display:block;
-      text-decoration:none;
-      color:inherit;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
     }
 
     .feature-card{
-      height:100%;
-      background:white;
+      background:var(--surface);
       border:1px solid var(--line);
-      border-radius:18px;
-      padding:22px;
-      transition:0.2s ease;
-      box-shadow:0 4px 14px rgba(15,23,42,0.03);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+      transition:.25s ease;
     }
 
-    .feature-link:hover .feature-card{
-      transform:translateY(-3px);
+    .feature-card:hover{
+      transform:translateY(-4px);
       box-shadow:var(--shadow);
-      border-color:#BFDBFE;
+      border-color:rgba(29,78,216,0.14);
     }
 
     .feature-icon{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      background:#EFF6FF;
-      color:var(--accent-blue);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      width:50px;
+      height:50px;
+      border-radius:15px;
+      display:grid;
+      place-items:center;
+      margin-bottom:18px;
+      background:var(--surface-soft);
+      color:var(--primary-dark);
       font-weight:800;
-      margin-bottom:16px;
-      font-size:0.9rem;
+      border:1px solid var(--line);
     }
 
     .feature-card h3{
-      margin:0 0 8px;
-      font-size:1.08rem;
+      margin:0 0 10px;
+      font-size:1.14rem;
       color:var(--text);
     }
 
     .feature-card p{
       margin:0;
       color:var(--muted);
+    }
+
+    .showcase{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .showcase-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .showcase-card h3{
+      margin:0 0 12px;
+      color:var(--text);
+      font-size:1.3rem;
+    }
+
+    .showcase-card p{
+      margin:0 0 18px;
+      color:var(--muted);
+    }
+
+    .mini-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .mini-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:16px;
+      background:var(--surface-soft);
+      border:1px solid var(--line);
+    }
+
+    .mini-bullet{
+      width:28px;
+      height:28px;
+      border-radius:10px;
+      background:var(--primary-dark);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-size:13px;
+      font-weight:800;
+      flex-shrink:0;
+      margin-top:1px;
+    }
+
+    .mini-item strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:2px;
+    }
+
+    .mini-item span{
+      color:var(--muted);
       font-size:0.96rem;
     }
 
+    .download-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .download-card{
+      position:relative;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+    }
+
+    .store-icon{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      margin-bottom:16px;
+      background:#0F172A;
+      color:#fff;
+      font-size:1.3rem;
+      font-weight:800;
+    }
+
+    .download-card h3{
+      margin:0 0 10px;
+      color:var(--text);
+    }
+
+    .download-card p{
+      margin:0 0 20px;
+      color:var(--muted);
+    }
+
+    .cta-wrap{
+      background:#0F172A;
+      border-radius:34px;
+      padding:40px;
+      color:#fff;
+      box-shadow:0 24px 55px rgba(15,23,42,0.18);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .cta-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .cta-wrap .eyebrow{
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      border-color:rgba(255,255,255,0.12);
+    }
+
+    .cta-wrap .eyebrow::before{
+      background:#fff;
+    }
+
+    .cta-wrap h2{
+      margin:16px 0 12px;
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.03em;
+    }
+
+    .cta-wrap p{
+      margin:0;
+      color:rgba(255,255,255,0.82);
+      max-width:62ch;
+      font-size:1.03rem;
+    }
+
+    .cta-actions{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .cta-actions .btn-primary{
+      background:#fff;
+      color:var(--text);
+      box-shadow:none;
+    }
+
+    .cta-actions .btn-secondary{
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      border-color:rgba(255,255,255,0.12);
+    }
+
     .footer{
+      padding:34px 0 48px;
       border-top:1px solid var(--line);
-      padding:32px 0 48px;
-      background:#FAFCFF;
+      background:rgba(255,255,255,0.55);
     }
 
     .footer-inner{
       display:flex;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
       align-items:center;
     }
 
-    .footer p{
-      margin:0;
-      font-weight:700;
+    .footer-brand{
+      margin:0 0 4px;
+      color:var(--text);
+      font-weight:800;
     }
 
-    .footer span{
+    .footer-copy{
       color:var(--muted);
-      font-size:0.95rem;
+      font-size:0.96rem;
     }
 
-    @media (max-width: 960px){
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .footer-links a:hover{
+      color:var(--text);
+    }
+
+    @media (max-width: 1024px){
       .hero-grid,
-      .feature-grid{
+      .showcase,
+      .cta-grid,
+      .feature-grid,
+      .download-grid,
+      .stats{
         grid-template-columns:1fr;
       }
 
       .hero h1{
         max-width:100%;
       }
+
+      .cta-actions{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
     }
 
-    @media (max-width: 720px){
+    @media (max-width: 780px){
       .nav-inner{
         flex-direction:column;
         align-items:flex-start;
-        padding:14px 0;
+        padding:16px 0;
       }
 
       .nav-links{
@@ -366,8 +669,16 @@
         gap:14px;
       }
 
-      .overview-grid{
+      .metric-grid{
         grid-template-columns:1fr;
+      }
+
+      .section{
+        padding:72px 0;
+      }
+
+      .cta-wrap{
+        padding:28px;
       }
 
       .footer-inner{
@@ -376,13 +687,23 @@
       }
     }
 
-    @media (max-width: 520px){
-      .hero-actions{
+    @media (max-width: 560px){
+      .hero{
+        padding-top:34px;
+      }
+
+      .hero-actions,
+      .cta-actions{
         flex-direction:column;
+        align-items:stretch;
       }
 
       .btn{
         width:100%;
+      }
+
+      .logo-copy .subbrand{
+        font-size:0.82rem;
       }
     }
   </style>
@@ -391,8 +712,10 @@
 
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="#" class="logo">
-        <div class="logo-box">BG</div>
+      <a href="#" class="logo" aria-label="BlueLight Guardian 24/7 home">
+        <div class="logo-box">
+          <img src="logo.png" alt="BlueLight Guardian 24/7 logo">
+        </div>
         <div class="logo-copy">
           <span class="brand">BlueLight Guardian 24/7</span>
           <span class="subbrand">Emergency service wellbeing platform</span>
@@ -401,8 +724,9 @@
 
       <nav class="nav-links">
         <a href="#features">Features</a>
-        <a href="#access">Access</a>
-        <a href="#download" class="btn btn-primary">Request Demo</a>
+        <a href="#platform">Platform</a>
+        <a href="#download">Download</a>
+        <a href="#access" class="btn btn-primary">Request Demo</a>
       </nav>
     </div>
   </header>
@@ -411,40 +735,85 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Police & emergency wellbeing support</span>
-          <h1>A calmer, smarter way to support <span>shift-based work</span></h1>
+          <div class="eyebrow">Police & emergency wellbeing support</div>
+          <h1>
+            A smarter way to support
+            <span>shift work and resilience</span>
+          </h1>
           <p>
             BlueLight Guardian 24/7 helps police officers and emergency personnel
-            manage schedules, track wellbeing and stay organised through a simple,
-            professional digital platform.
+            manage operational schedules while monitoring hydration, nutrition,
+            sleep, recovery, mood and wellbeing in one modern platform.
           </p>
 
           <div class="hero-actions">
-            <a href="#features" class="btn btn-primary">Explore Features</a>
-            <a href="#access" class="btn btn-secondary">Access Information</a>
+            <a href="#access" class="btn btn-primary">Request Demo Access</a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
+
+          <div class="hero-tags">
+            <span>Shift Scheduling</span>
+            <span>Sleep Insights</span>
+            <span>Mood Tracking</span>
+            <span>Hydration Goals</span>
+            <span>Nutrition Logs</span>
+            <span>Wellbeing Support</span>
           </div>
         </div>
 
         <div class="hero-panel">
-          <h3>Today’s Overview</h3>
-          <div class="overview-grid">
-            <div class="overview-card">
+          <div class="panel-header">
+            <div>
+              <p class="panel-title">Today’s Overview</p>
+              <h3>Operational readiness snapshot</h3>
+            </div>
+            <div class="live-pill">Live</div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
               <span>Mood</span>
               <strong>Focused and positive</strong>
             </div>
-            <div class="overview-card">
+            <div class="metric">
               <span>Hydration</span>
               <strong>1.8L logged</strong>
             </div>
-            <div class="overview-card">
+            <div class="metric">
               <span>Sleep</span>
               <strong>7h 10m recorded</strong>
             </div>
-            <div class="overview-card">
+            <div class="metric">
               <span>Next Shift</span>
               <strong>Night shift · 20:00</strong>
             </div>
           </div>
+
+          <div class="panel-strip">
+            <div>
+              <small>Wellbeing status</small>
+              <strong>Stable routine maintained</strong>
+            </div>
+            <div>
+              <small>Recovery score</small>
+              <strong>82%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container stats">
+        <div class="stat">
+          <strong>24/7</strong>
+          <p>Designed around demanding operational schedules</p>
+        </div>
+        <div class="stat">
+          <strong>6 Core Tools</strong>
+          <p>Shift, sleep, hydration, nutrition, mood and support</p>
+        </div>
+        <div class="stat">
+          <strong>Mobile Ready</strong>
+          <p>Accessible for iPhone, iPad and Android devices</p>
         </div>
       </div>
     </section>
@@ -452,73 +821,130 @@
     <section id="features" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Core Features</h2>
+          <div class="eyebrow">Core Features</div>
+          <h2>Everything needed to support routine, recovery and wellbeing</h2>
           <p>
-            Each module has its own dedicated page so users can access guidance,
-            information and tools more easily.
+            Built with a polished, professional experience for frontline teams
+            working under pressure, on shift, and across changing operational patterns.
           </p>
         </div>
 
         <div class="feature-grid">
-          <a href="shift-management.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">01</div>
-              <h3>Shift Schedule</h3>
-              <p>Create shifts, patterns, cycles and repeating schedules.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">01</div>
+            <h3>Shift Management</h3>
+            <p>Create shifts, cycles and repeating schedules with clear visibility across work patterns.</p>
+          </article>
 
-          <a href="hydration.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">02</div>
-              <h3>Hydration</h3>
-              <p>Monitor daily intake and maintain hydration goals.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">02</div>
+            <h3>Daily Journal</h3>
+            <p>Track mood, reflections and wellbeing changes to build greater self-awareness over time.</p>
+          </article>
 
-          <a href="nutrition.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">03</div>
-              <h3>Nutrition</h3>
-              <p>Track meals, routines and nutritional habits.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">03</div>
+            <h3>Hydration Tracking</h3>
+            <p>Monitor fluid intake and daily hydration goals during busy operational periods.</p>
+          </article>
 
-          <a href="sleep.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">04</div>
-              <h3>Sleep</h3>
-              <p>Review sleep duration, recovery and rest quality.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">04</div>
+            <h3>Nutrition Monitoring</h3>
+            <p>Keep simple meal logs and support healthier fuelling during variable working hours.</p>
+          </article>
 
-          <a href="daily-journal.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">05</div>
-              <h3>Daily Journal</h3>
-              <p>Record reflections, emotions and personal wellbeing notes.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">05</div>
+            <h3>Sleep Monitoring</h3>
+            <p>Record rest, recovery and sleep duration around early, late and night shift routines.</p>
+          </article>
 
-          <a href="wellbeing-hub.html" class="feature-link">
-            <div class="feature-card">
-              <div class="feature-icon">06</div>
-              <h3>Wellbeing Hub</h3>
-              <p>Access guidance for mental, physical and operational wellbeing.</p>
-            </div>
-          </a>
+          <article class="feature-card">
+            <div class="feature-icon">06</div>
+            <h3>Wellbeing Hub</h3>
+            <p>Access mental and physical health guidance through a focused and supportive interface.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="access" class="section">
+    <section id="platform" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Access Information</h2>
+          <div class="eyebrow">Platform Benefits</div>
+          <h2>A modern interface designed to feel calm, clear and professional</h2>
           <p>
-            The platform is designed for straightforward onboarding, guided access
-            and structured support for operational teams.
+            The experience is structured to reduce friction and support quick,
+            confident interactions during busy workdays and demanding shifts.
           </p>
+        </div>
+
+        <div class="showcase">
+          <div class="showcase-card">
+            <h3>Designed for frontline reality</h3>
+            <p>
+              BlueLight Guardian 24/7 focuses on the practical wellbeing needs of
+              police and emergency personnel, combining operational structure with
+              supportive personal tracking.
+            </p>
+
+            <div class="mini-list">
+              <div class="mini-item">
+                <div class="mini-bullet">✓</div>
+                <div>
+                  <strong>Fast to use</strong>
+                  <span>Simple daily inputs that fit around active shift work.</span>
+                </div>
+              </div>
+              <div class="mini-item">
+                <div class="mini-bullet">✓</div>
+                <div>
+                  <strong>Professional look and feel</strong>
+                  <span>Calm blue styling with a cleaner and more trusted visual identity.</span>
+                </div>
+              </div>
+              <div class="mini-item">
+                <div class="mini-bullet">✓</div>
+                <div>
+                  <strong>Supportive structure</strong>
+                  <span>Balances operational readiness with recovery and wellbeing.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <h3>Ideal for demonstration and rollout</h3>
+            <p>
+              The platform can be presented as part of a polished demo, with onboarding,
+              login guidance and supporting user documentation for hosted deployment.
+            </p>
+
+            <div class="mini-list">
+              <div class="mini-item">
+                <div class="mini-bullet">01</div>
+                <div>
+                  <strong>Demo-ready landing experience</strong>
+                  <span>Clear sections for features, benefits, access and download options.</span>
+                </div>
+              </div>
+              <div class="mini-item">
+                <div class="mini-bullet">02</div>
+                <div>
+                  <strong>Mobile-first presentation</strong>
+                  <span>Responsive layout for desktop, tablet and phone viewing.</span>
+                </div>
+              </div>
+              <div class="mini-item">
+                <div class="mini-bullet">03</div>
+                <div>
+                  <strong>Brand-ready logo support</strong>
+                  <span>Swap the placeholder with your real logo image in one step.</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -526,21 +952,72 @@
     <section id="download" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Mobile Access</h2>
+          <div class="eyebrow">Download</div>
+          <h2>Access the platform across Apple and Android devices</h2>
           <p>
-            BlueLight Guardian 24/7 can be presented across iOS and Android
-            through external app links and platform documentation.
+            Present clear app access options for users, teams and demo audiences
+            through a polished multi-platform download section.
           </p>
+        </div>
+
+        <div class="download-grid">
+          <div class="download-card">
+            <div class="store-icon"></div>
+            <h3>Download on the App Store</h3>
+            <p>Install BlueLight Guardian on iPhone and iPad with a clean onboarding experience.</p>
+            <a href="https://apps.apple.com/gb/app/blue-light-guardian-24-7/id6755662968" target="_blank" class="btn btn-secondary">View iOS App</a>
+          </div>
+
+          <div class="download-card">
+            <div class="store-icon">▶</div>
+            <h3>Get it on Google Play</h3>
+            <p>Install BlueLight Guardian on Android devices for mobile access on the go.</p>
+            <a href="#" target="_blank" class="btn btn-secondary">View Android App</a>
+          </div>
         </div>
       </div>
     </section>
+
+    <!--
+    <section id="access" class="section">
+      <div class="container">
+        <div class="cta-wrap">
+          <div class="cta-grid">
+            <div>
+              <div class="eyebrow">Access Information</div>
+              <h2>Ready for hosting, onboarding and guided platform access</h2>
+              <p>
+                The application is prepared for deployment with supporting user documentation,
+                login guidance and onboarding instructions. Designed to help emergency personnel
+                stay organised, supported and wellbeing-aware throughout demanding work patterns.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a href="#" class="btn btn-primary">Request Demo Access</a>
+              <a href="#features" class="btn btn-secondary">See Core Features</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
   </main>
 
   <footer class="footer">
     <div class="container footer-inner">
       <div>
-        <p>BlueLight Guardian 24/7</p>
-        <span>Supporting operational readiness through wellbeing-aware design.</span>
+        <p class="footer-brand">BlueLight Guardian 24/7</p>
+        <div class="footer-copy">
+          Supporting operational readiness through wellbeing-aware design.
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#platform">Platform</a>
+        <a href="#download">Download</a>
+        <a href="#access">Access</a>
       </div>
     </div>
   </footer>
