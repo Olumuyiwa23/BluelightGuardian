@@ -237,23 +237,23 @@
       padding:56px 0 40px;
     }
 
-    .hero-grid{
+    .hero-layout{
       display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:40px;
+      grid-template-columns:minmax(0, 1.05fr) minmax(280px, 380px);
+      gap:44px;
       align-items:center;
     }
 
     .hero-copy{
-      max-width:640px;
+      max-width:720px;
     }
 
     .hero h1{
       margin:18px 0 16px;
-      font-size:clamp(2.8rem, 6vw, 4.6rem);
+      font-size:clamp(2.8rem, 6vw, 4.8rem);
       line-height:1;
       letter-spacing:-0.05em;
-      max-width:11ch;
+      max-width:12ch;
       color:var(--text);
     }
 
@@ -268,98 +268,30 @@
       font-size:1.03rem;
     }
 
-    .hero-actions{
+    .hero-side-screen{
       display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .hero-bottom-screens{
+      margin-top:34px;
+      display:flex;
+      gap:28px;
+      justify-content:center;
+      align-items:flex-start;
       flex-wrap:wrap;
-      gap:14px;
-      margin:28px 0 22px;
-    }
-
-    .hero-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:8px;
-    }
-
-    .hero-tags a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      padding:8px 14px;
-      font-size:0.9rem;
-      font-weight:600;
-      border-radius:999px;
-      background:#F7F9FC;
-      border:1px solid #E2E8F0;
-      color:#475569;
-      text-decoration:none;
-      transition:all 0.2s ease;
-    }
-
-    .hero-tags a:hover{
-      background:#EAF4FF;
-      border-color:#007BFF;
-      color:#007BFF;
-      transform:translateY(-1px);
-    }
-
-    .hero-tags a:active{
-      transform:scale(0.98);
-    }
-
-    .hero-visual{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:560px;
-    }
-
-    .hero-visual{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:520px;
-    }
-
-    .hero-visual{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:560px;
-    }
-
-    .phone-showcase{
-      position:relative;
-      display:flex;
-      gap:22px;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:nowrap;
-    }
-
-    .phone-showcase::before{
-      content:"";
-      position:absolute;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(0,123,255,0.08), transparent 68%);
-      filter:blur(24px);
-      z-index:0;
     }
 
     .phone-device{
       position:relative;
-      width:340px;
+      width:300px;
       border-radius:36px;
       background:#FFFFFF;
       border:1px solid var(--line);
       box-shadow:0 20px 50px rgba(15,23,42,0.10);
       padding:10px;
       transition:transform .25s ease, box-shadow .25s ease;
-      z-index:1;
     }
 
     .phone-device:hover{
@@ -367,18 +299,12 @@
       box-shadow:0 26px 60px rgba(15,23,42,0.15);
     }
 
-    .phone-device-left{
-      transform:translateY(30px) rotate(-6deg);
+    .phone-device-single{
+      width:320px;
     }
 
-    .phone-device-center{
-      width:380px;
-      transform:translateY(-10px);
-      z-index:2;
-    }
-
-    .phone-device-right{
-      transform:translateY(30px) rotate(6deg);
+    .phone-device-bottom{
+      width:300px;
     }
 
     .phone-frame{
@@ -403,7 +329,8 @@
 
     .phone-frame img{
       width:100%;
-      height:auto;
+      aspect-ratio:9 / 19.5;
+      object-fit:cover;
       display:block;
       border-radius:28px;
     }
@@ -683,13 +610,16 @@
     }
 
     @media (max-width: 1024px){
-      .hero-grid,
-      .stats,
       .showcase,
       .feature-grid,
       .download-grid,
       .cta-grid{
         grid-template-columns:1fr;
+      }
+
+      .hero-layout{
+        grid-template-columns:1fr;
+        gap:28px;
       }
 
       .hero-copy{
@@ -700,27 +630,19 @@
         max-width:100%;
       }
 
-      .hero-visual{
-        min-height:auto;
-        margin-top:10px;
+      .hero-side-screen{
+        justify-content:flex-start;
       }
 
-      .phone-showcase{
-        gap:16px;
-      }
-
-      .phone-device{
-        width:190px;
-      }
-
-      .phone-device-center{
-        width:210px;
+      .hero-bottom-screens{
+        justify-content:flex-start;
       }
 
       .cta-actions{
         flex-direction:row;
         flex-wrap:wrap;
       }
+    }
     }
     }
     }
@@ -766,29 +688,22 @@
         width:100%;
       }
 
-      .hero-tags{
-        gap:8px;
-      }
-
-      .hero-tags a{
-        width:100%;
-        justify-content:space-between;
-      }
-
-      .phone-showcase{
-        flex-direction:column;
-        gap:18px;
-      }
-
       .phone-device,
-      .phone-device-center{
-        width:220px;
-        transform:none;
+      .phone-device-single,
+      .phone-device-bottom{
+        width:100%;
+        max-width:320px;
+      }
+
+      .hero-side-screen,
+      .hero-bottom-screens{
+        justify-content:center;
       }
 
       .logo-copy .subbrand{
         font-size:0.82rem;
       }
+    }
     }
     }
     }
@@ -815,7 +730,7 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container hero-layout">
         <div class="hero-copy">
           <div class="eyebrow">Police & emergency wellbeing support</div>
 
@@ -829,46 +744,31 @@
             manage operational schedules while monitoring hydration, nutrition,
             sleep, recovery, mood and wellbeing in one modern platform.
           </p>
-
-          
-
-          <div class="hero-tags">
-            <a href="shiftmanagement.html">Shift Scheduling →</a>
-            <a href="sleep.html">Sleep Insights →</a>
-            <a href="journal.html">Mood Tracking →</a>
-            <a href="hydration.html">Hydration Goals →</a>
-            <a href="nutrition.html">Nutrition Logs →</a>
-            <a href="wellbeing.html">Wellbeing Support →</a>
-          </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="phone-showcase">
-            <div class="phone-device phone-device-left">
-              <div class="phone-frame">
-                <img src="images/app-screen-1.png" alt="BlueLight Guardian dashboard screen">
-              </div>
-            </div>
-
-            <div class="phone-device phone-device-center">
-              <div class="phone-frame">
-                <img src="images/app-screen-2.png" alt="BlueLight Guardian shift management screen">
-              </div>
-            </div>
-
-            <div class="phone-device phone-device-right">
-              <div class="phone-frame">
-                <img src="images/app-screen-3.png" alt="BlueLight Guardian wellbeing screen">
-              </div>
+        <div class="hero-side-screen">
+          <div class="phone-device phone-device-single">
+            <div class="phone-frame">
+              <img src="images/app-screen-1.png" alt="BlueLight Guardian dashboard screen">
             </div>
           </div>
         </div>
       </div>
+
+      <div class="container hero-bottom-screens">
+        <div class="phone-device phone-device-bottom">
+          <div class="phone-frame">
+            <img src="images/app-screen-2.png" alt="BlueLight Guardian shift management screen">
+          </div>
+        </div>
+
+        <div class="phone-device phone-device-bottom">
+          <div class="phone-frame">
+            <img src="images/app-screen-3.png" alt="BlueLight Guardian wellbeing screen">
+          </div>
         </div>
       </div>
-      </div>
-
-      </section>
+    </section>
 
     <section id="features" class="section">
       <div class="container">
