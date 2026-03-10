@@ -10,35 +10,43 @@
   />
   <style>
     :root{
-      --bg:#F8FAFC;
-      --surface:#FFFFFF;
-      --surface-soft:#F1F5F9;
-      --surface-muted:#E2E8F0;
-      --primary:#1D4ED8;
-      --primary-dark:#1E3A8A;
-      --text:#0F172A;
-      --muted:#475569;
-      --muted-soft:#64748B;
-      --line:rgba(15,23,42,0.08);
-      --line-strong:rgba(15,23,42,0.12);
-      --success:#15803D;
-      --shadow:0 18px 40px rgba(15,23,42,0.08);
-      --shadow-soft:0 10px 24px rgba(15,23,42,0.05);
-      --radius-xl:28px;
-      --radius-lg:20px;
-      --radius-md:14px;
-      --container:1180px;
-    }
+
+  /* App Background */
+  --bg:#FEFEFF;
+
+  /* Surfaces */
+  --surface:#FFFFFF;
+  --surface-soft:#F5F7FB;
+
+  /* Brand / App Blue */
+  --primary:#2F80ED;
+  --primary-dark:#1D4ED8;
+
+  /* Text */
+  --text:#1E293B;
+  --muted:#64748B;
+
+  /* Borders */
+  --line:#E2E8F0;
+
+  /* Status */
+  --success:#22C55E;
+
+  /* Shadow */
+  --shadow:0 12px 28px rgba(0,0,0,0.06);
+
+}
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter, Arial, sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg, #FCFDFF 0%, var(--bg) 100%);
-      line-height:1.6;
-    }
+   
+body{
+  margin:0;
+  font-family:Inter, Arial, sans-serif;
+  color:var(--text);
+  background:#FEFEFF;
+  line-height:1.6;
+}
 
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
