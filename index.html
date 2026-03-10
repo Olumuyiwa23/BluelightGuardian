@@ -312,20 +312,15 @@
       overflow:hidden;
       border-radius:28px;
       background:#000;
+      /* simple phone screen frame without notch */
+    
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:#000;
     }
 
-    .phone-frame::before{
-      content:"";
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:84px;
-      height:18px;
-      border-radius:999px;
-      background:rgba(15,23,42,0.95);
-      z-index:2;
-    }
+    
 
     .phone-frame img{
       width:100%;
@@ -749,7 +744,7 @@
         <div class="hero-side-screen">
           <div class="phone-device phone-device-single">
             <div class="phone-frame">
-              <img src="appscreen1.png" alt="BlueLight Guardian dashboard screen">
+              <img src="images/app-screen-1.png" alt="BlueLight Guardian dashboard screen">
             </div>
           </div>
         </div>
@@ -758,19 +753,19 @@
       <div class="container hero-bottom-screens">
         <div class="phone-device phone-device-bottom">
           <div class="phone-frame">
-            <img src="appscreen2.png" alt="BlueLight Guardian shift management screen">
+            <img src="images/app-screen-2.png" alt="BlueLight Guardian shift management screen">
           </div>
         </div>
 
         <div class="phone-device phone-device-bottom">
           <div class="phone-frame">
-            <img src="appscreen3.png" alt="BlueLight Guardian wellbeing screen">
+            <img src="images/app-screen-3.png" alt="BlueLight Guardian wellbeing screen">
           </div>
         </div>
 
         <div class="phone-device phone-device-bottom">
           <div class="phone-frame">
-            <img src="appscreen4.png" alt="BlueLight Guardian additional feature screen">
+            <img src="images/app-screen-4.png" alt="BlueLight Guardian additional feature screen">
           </div>
         </div>
       </div>
